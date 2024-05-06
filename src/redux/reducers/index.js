@@ -2,7 +2,6 @@ const initialState = {
   favoriteCompany: {
     content: [],
   },
-  selectedBtn: null,
 };
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,18 +21,11 @@ const mainReducer = (state = initialState, action) => {
         favoriteCompany: {
           ...state.favoriteCompany,
           content: state.favoriteCompany.content.filter(
-            (_, i) => i !== action.payload
+            (company) => company !== action.payload
           ),
         },
       };
-    case "SELECTED_BUTTON":
-      return {
-        ...state,
-        selectedBtn: {
-          ...state.selectedBtn,
-          content: action.payload,
-        },
-      };
+
     default:
       return state;
   }
